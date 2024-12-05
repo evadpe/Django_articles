@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Détails de l'article{% endblock %}
+
+{% block content %}
+<h1>{{ post.title }}</h1>
+<p>{{ post.content }}</p>
+
+<h2>Commentaires</h2>
+<ul>
+    {% for comment in comments %}
+        <li>
+            <strong>Auteur :</strong> {{ comment.author }} <br>
+            <strong>Texte :</strong> {{ comment.text }}
+            <a href="{% url 'edit_comment' post.pk comment.pk %}">Modifier</a> |
+            <a href="{% url 'delete_comment' post.pk comment.pk %}">Supprimer</a>
+        </li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'add_comment' post.pk %}">Ajouter un commentaire</a> |
+<a href="{% url 'post_list' %}">Retour à la liste des blogs</a>
+{% endblock %}

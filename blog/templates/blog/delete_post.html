@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Supprimer l'article{% endblock %}
+
+{% block content %}
+<h1>Êtes-vous sûr de vouloir supprimer "{{ post.title }}" ?</h1>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Oui, supprimer</button>
+    <a href="{% url 'post_list' %}">Annuler</a>
+</form>
+{% endblock %}

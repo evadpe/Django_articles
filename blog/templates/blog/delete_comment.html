@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Supprimer le commentaire{% endblock %}
+
+{% block content %}
+<h1>Êtes-vous sûr de vouloir supprimer le commentaire de {{ comment.author }} : "{{ comment.text }}" ?</h1>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Oui, supprimer</button>
+    <a href="{% url 'post_detail' post.pk %}">Annuler</a>
+</form>
+{% endblock %}
